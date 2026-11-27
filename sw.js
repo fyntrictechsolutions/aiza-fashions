@@ -1,6 +1,6 @@
 // Bump VERSION after changing any file so returning visitors get the update.
-var VERSION = 'aiza-v2';
-var CORE = ['./','index.html','manifest.webmanifest','assets/logo.png','assets/hero.jpg',
+var VERSION = 'aiza-v3';
+var CORE = ['./','index.html','manifest.webmanifest','assets/mark.png','assets/logo-light.png','assets/hero.jpg',
   'assets/set1.jpg','assets/set2.jpg','assets/set3.jpg','assets/set4.jpg'];
 self.addEventListener('install', function(e){ e.waitUntil(caches.open(VERSION).then(function(c){ return c.addAll(CORE); }).then(function(){ return self.skipWaiting(); })); });
 self.addEventListener('activate', function(e){ e.waitUntil(caches.keys().then(function(k){ return Promise.all(k.filter(function(x){ return x!==VERSION; }).map(function(x){ return caches.delete(x); })); }).then(function(){ return self.clients.claim(); })); });
